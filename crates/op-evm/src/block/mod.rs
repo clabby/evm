@@ -108,8 +108,8 @@ where
         // blocks will always have at least a single transaction in them (the L1 info transaction),
         // so we can safely assume that this will always be triggered upon the transition and that
         // the above check for empty blocks will never be hit on OP chains.
-        ensure_create2_deployer(&self.spec, self.evm.block().timestamp, self.evm.db_mut())
-            .map_err(BlockExecutionError::other)?;
+        // ensure_create2_deployer(&self.spec, self.evm.block().timestamp, self.evm.db_mut())
+        //     .map_err(BlockExecutionError::other)?;
 
         Ok(())
     }
