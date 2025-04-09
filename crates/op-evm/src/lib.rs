@@ -210,10 +210,10 @@ where
 /// Factory producing [`OpEvm`]s.
 #[derive(Debug, Default, Clone, Copy)]
 #[non_exhaustive]
-pub struct OpEvmFactory;
+pub struct OpEvmFactory<P: PrecompileProvider>;
 
 impl EvmFactory for OpEvmFactory {
-    type Evm<DB: Database, I: Inspector<OpContext<DB>>> = OpEvm<DB, I>;
+    type Evm<DB: Database, I: Inspector<OpContext<DB>>> = OpEvm<DB, I, P>;
     type Context<DB: Database> = OpContext<DB>;
     type Tx = OpTransaction<TxEnv>;
     type Error<DBError: core::error::Error + Send + Sync + 'static> =
